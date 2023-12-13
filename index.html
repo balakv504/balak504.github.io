@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)https://efficientsam.github.io/ -->
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="description" content="EfficientSAM">
+  <meta name="keywords" content="EfficientSAM, Masked Image Pretraining, Instance Segmentation>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EfficientSAM</title>
+
+  <meta name="google-site-verification" content="6lbYN1vX7A4sD8SrVniq84UEKyEUSBgxeP7d3FjuuK0">
+
+  <style type="text/css">svg:not(:root).svg-inline--fa{overflow:visible}.svg-inline--fa{display:inline-block;font-size:inherit;height:1em;overflow:visible;vertical-align:-.125em}.svg-inline--fa.fa-lg{vertical-align:-.225em}.svg-inline--fa.fa-w-1{width:.0625em}.svg-inline--fa.fa-w-2{width:.125em}.svg-inline--fa.fa-w-3{width:.1875em}.svg-inline--fa.fa-w-4{width:.25em}.svg-inline--fa.fa-w-5{width:.3125em}.svg-inline--fa.fa-w-6{width:.375em}.svg-inline--fa.fa-w-7{width:.4375em}.svg-inline--fa.fa-w-8{width:.5em}.svg-inline--fa.fa-w-9{width:.5625em}.svg-inline--fa.fa-w-10{width:.625em}.svg-inline--fa.fa-w-11{width:.6875em}.svg-inline--fa.fa-w-12{width:.75em}.svg-inline--fa.fa-w-13{width:.8125em}.svg-inline--fa.fa-w-14{width:.875em}.svg-inline--fa.fa-w-15{width:.9375em}.svg-inline--fa.fa-w-16{width:1em}.svg-inline--fa.fa-w-17{width:1.0625em}.svg-inline--fa.fa-w-18{width:1.125em}.svg-inline--fa.fa-w-19{width:1.1875em}.svg-inline--fa.fa-w-20{width:1.25em}.svg-inline--fa.fa-pull-left{margin-right:.3em;width:auto}.svg-inline--fa.fa-pull-right{margin-left:.3em;width:auto}.svg-inline--fa.fa-border{height:1.5em}.svg-inline--fa.fa-li{width:2em}.svg-inline--fa.fa-fw{width:1.25em}.fa-layers svg.svg-inline--fa{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.fa-layers{display:inline-block;height:1em;position:relative;text-align:center;vertical-align:-.125em;width:1em}.fa-layers svg.svg-inline--fa{-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter,.fa-layers-text{display:inline-block;position:absolute;text-align:center}.fa-layers-text{left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);-webkit-transform-origin:center center;transform-origin:center center}.fa-layers-counter{background-color:#ff253a;border-radius:1em;-webkit-box-sizing:border-box;box-sizing:border-box;color:#fff;height:1.5em;line-height:1;max-width:5em;min-width:1.5em;overflow:hidden;padding:.25em;right:0;text-overflow:ellipsis;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-bottom-right{bottom:0;right:0;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom right;transform-origin:bottom right}.fa-layers-bottom-left{bottom:0;left:0;right:auto;top:auto;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:bottom left;transform-origin:bottom left}.fa-layers-top-right{right:0;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top right;transform-origin:top right}.fa-layers-top-left{left:0;right:auto;top:0;-webkit-transform:scale(.25);transform:scale(.25);-webkit-transform-origin:top left;transform-origin:top left}.fa-lg{font-size:1.3333333333em;line-height:.75em;vertical-align:-.0667em}.fa-xs{font-size:.75em}.fa-sm{font-size:.875em}.fa-1x{font-size:1em}.fa-2x{font-size:2em}.fa-3x{font-size:3em}.fa-4x{font-size:4em}.fa-5x{font-size:5em}.fa-6x{font-size:6em}.fa-7x{font-size:7em}.fa-8x{font-size:8em}.fa-9x{font-size:9em}.fa-10x{font-size:10em}.fa-fw{text-align:center;width:1.25em}.fa-ul{list-style-type:none;margin-left:2.5em;padding-left:0}.fa-ul>li{position:relative}.fa-li{left:-2em;position:absolute;text-align:center;width:2em;line-height:inherit}.fa-border{border:solid .08em #eee;border-radius:.1em;padding:.2em .25em .15em}.fa-pull-left{float:left}.fa-pull-right{float:right}.fa.fa-pull-left,.fab.fa-pull-left,.fal.fa-pull-left,.far.fa-pull-left,.fas.fa-pull-left{margin-right:.3em}.fa.fa-pull-right,.fab.fa-pull-right,.fal.fa-pull-right,.far.fa-pull-right,.fas.fa-pull-right{margin-left:.3em}.fa-spin{-webkit-animation:fa-spin 2s infinite linear;animation:fa-spin 2s infinite linear}.fa-pulse{-webkit-animation:fa-spin 1s infinite steps(8);animation:fa-spin 1s infinite steps(8)}@-webkit-keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes fa-spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.fa-rotate-90{-webkit-transform:rotate(90deg);transform:rotate(90deg)}.fa-rotate-180{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.fa-rotate-270{-webkit-transform:rotate(270deg);transform:rotate(270deg)}.fa-flip-horizontal{-webkit-transform:scale(-1,1);transform:scale(-1,1)}.fa-flip-vertical{-webkit-transform:scale(1,-1);transform:scale(1,-1)}.fa-flip-both,.fa-flip-horizontal.fa-flip-vertical{-webkit-transform:scale(-1,-1);transform:scale(-1,-1)}:root .fa-flip-both,:root .fa-flip-horizontal,:root .fa-flip-vertical,:root .fa-rotate-180,:root .fa-rotate-270,:root .fa-rotate-90{-webkit-filter:none;filter:none}.fa-stack{display:inline-block;height:2em;position:relative;width:2.5em}.fa-stack-1x,.fa-stack-2x{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0}.svg-inline--fa.fa-stack-1x{height:1em;width:1.25em}.svg-inline--fa.fa-stack-2x{height:2em;width:2.5em}.fa-inverse{color:#fff}.sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.sr-only-focusable:active,.sr-only-focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}.svg-inline--fa .fa-primary{fill:var(--fa-primary-color,currentColor);opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa .fa-secondary{fill:var(--fa-secondary-color,currentColor);opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-primary{opacity:.4;opacity:var(--fa-secondary-opacity,.4)}.svg-inline--fa.fa-swap-opacity .fa-secondary{opacity:1;opacity:var(--fa-primary-opacity,1)}.svg-inline--fa mask .fa-primary,.svg-inline--fa mask .fa-secondary{fill:#000}.fad.fa-inverse{color:#fff}</style><link href="./MiniGPT-v2_files/css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./EfficientSAM_files/bulma.min.css">
+  <link rel="stylesheet" href="./EfficientSAM_files/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./EfficientSAM_files/bulma-slider.min.css">
+  <link rel="stylesheet" href="./EfficientSAM_files/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./EfficientSAM_files/academicons.min.css">
+  <!-- <link rel="icon" href="./static/images/icon.png"> -->
+  <link rel="stylesheet" href="./EfficientSAM_files/index.css">
+
+  <link rel="shortcut icon" href="https://efficientsam.github.io/path/to/favicon.ico" type="image/x-icon">
+
+  <script src="./EfficientSAM_files/jquery.min.js"></script>
+  <script defer="" src="./EfficientSAM_files/fontawesome.all.min.js"></script>
+  <script src="./EfficientSAM_files/bulma-carousel.min.js"></script>
+  <script src="./EfficientSAM_files/bulma-slider.min.js"></script>
+  <script src="./EfficientSAM_files/index.js"></script>
+  <style>
+
+    #main{
+        position: relative;;
+        width: 1200px;
+    }
+
+    .box{
+        float: left;
+        padding: 15px 0 0 15px;
+/*        background-color: red;*/
+    }
+
+    .pic{
+        width: 500px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    .pic img{
+        width: 500px;
+    }
+
+  </style></head>
+
+
+
+
+
+  <body>
+
+<script>
+  window.addEventListener('load', function() {
+    const urls = [
+      'https://fc1e6023d67554e5b3.gradio.live/',
+      'https://d69e718da6c967c5a9.gradio.live/',
+    ];
+    const randomIndex = Math.floor(Math.random() * urls.length);
+    const randomURL = urls[randomIndex];
+    document.getElementById('randomLink').href = randomURL;
+  });
+</script>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">EfficientSAM:</h1>
+          <h2 class="title is-2 publication-title">Leveraged Masked Image Pretraining for Efficient Segment Anything</h2>
+          <div class="is-size-5">
+            <span class="author-block">
+              <a href="https://pages.cs.wisc.edu/~yunyang/" style="color:#008AD7;font-weight:normal;">Yunyang Xiong</a>,</span>
+            <span class="author-block">
+                <a href="https://www.linkedin.com/in/balakrishnan-varadarajan-017b834/" style="color:#008AD7;font-weight:normal;">Bala Varadarajan<sup>*</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/klightz/" style="color:#008AD7;font-weight:normal;">Lemeng Wu<sup>*</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="https://engineering.purdue.edu/people/xiaoyu.xiang.1" style="color:#008AD7;font-weight:normal;">Xiaoyu Xiang</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://fanyix.cs.ucdavis.edu/" style="color:#008AD7;font-weight:normal;">Fanyi Xiao</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/andrew.cmu.edu/zcckernel" style="color:#008AD7;font-weight:normal;">Chenchen Zhu</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/xiaoliangdai/" style="color:#008AD7;font-weight:normal;">Xiaoliang Dai</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://wdilin.github.io/" style="color:#008AD7;font-weight:normal;">Dilin Wang</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://feisun.org/" style="color:#008AD7;font-weight:normal;">Fei Sun</a>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.forrestiandola.com/" style="color:#008AD7;font-weight:normal;">
+                Forrest Iandola</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=F1mr9C0AAAAJ&amp;hl=en" style="color:#008AD7;font-weight:normal;">Raghuraman Krishnamoorthi</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://v-chandra.github.io/" style="color:#008AD7;font-weight:normal;">Vikas Chandra</a>
+            </span>
+
+          </div>
+
+          <br>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><b style="color:#008AD7;font-weight:normal;">▶ </b>Meta AI Research</span>
+            <!-- <span class="author-block"><b style="color:#00A4EF; font-weight:normal">&#x25B6 </b>Microsoft Research, Redmond; </span> -->
+            <!-- <span class="author-block"><b style="color:#008AD7; font-weight:normal">&#x25B6 </b>Microsoft Cloud & AI </span> -->
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Second Author</span>
+            <!-- <span class="author-block"><sup>☨</sup>Second Author</span> -->
+            <!-- <span class="author-block"><sup>&#x2691;</sup>Project Lead </span> -->
+          </div>
+
+          <br>
+         <!--  <div class="is-size-5 publication-authors">
+            <span class="author-block"><b style="color:#e08ba0; font-weight:normal"> <b>In CVPR2023</b> </b></span>
+          </div> -->
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href=" https://arxiv.org/pdf/2312.00863.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://github.com/yformer/EfficientSAM" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <span class="link-block">
+                      <a href="https://huggingface.co/spaces/yunyangx/EfficientSAM" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        🤗
+                      </span>
+                      <span>Space</span>
+                    </a>
+                  </span>
+
+
+              <span class="link-block">
+                <a id="randomLink" href="https://fc1e6023d67554e5b3.gradio.live/" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <svg class="svg-inline--fa fa-play fa-w-14" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="play" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg><!-- <i class="fa fa-play"></i> Font Awesome fontawesome.com -->
+                  </span>
+                  <span>Demo</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://youtu.be/KeMhbF7j62I" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg><!-- <i class="fab fa-youtube"></i> Font Awesome fontawesome.com -->
+                  </span>
+                  <span>Video</span>
+                  </a>
+                </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <script>
+  window.addEventListener('load', function() {
+    const urls = [
+      'https://876a8d3e814b8c3a8b.gradio.live',
+      'https://a51cb1bdf92ad731d6.gradio.live',
+    ];
+    const randomIndex = Math.floor(Math.random() * urls.length);
+    const randomURL = urls[randomIndex];
+    const iframe = document.getElementById('gradio');
+    iframe.setAttribute('src', randomURL);
+  });
+</script>
+
+<div class="columns is-centered">
+<iframe id="gradio" width="70%" height="1000">
+  <p>Gradio.</p>
+</iframe>
+</div>   -->
+
+<!-- <script
+  type="module"
+  src="https://gradio.s3-us-west-2.amazonaws.com/3.47.1/gradio.js"
+></script>
+<gradio-app src="https://7f2eb30890158a1082.gradio.live"></gradio-app>
+
+ -->
+
+<!-- <link rel="stylesheet" href="js/ft-carousel.css" />
+<script src="js/jquery.min.js"></script>
+<script src="js/ft-carousel.min.js"></script>
+<script type="text/javascript">
+  $("#carousel_1").FtCarousel();
+
+  $("#carousel_2").FtCarousel({
+    index: 1,
+    auto: false
+  });
+
+  $("#carousel_3").FtCarousel({
+    index: 0,
+    auto: true,
+    time: 3000,
+    indicators: false,
+    buttons: true
+  });
+</script> -->
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="example">
+      <div class="ft-carousel" id="carousel_1">
+        <ul class="carousel-inner"> -->
+          <!-- <li class="carousel-item"><img src="demos/wop_2.png" /></li>
+          <li class="carousel-item"><img src="demos/cook_1.png" /></li>
+          <li class="carousel-item"><img src="demos/fix_1.png" /></li>
+          <li class="carousel-item"><img src="demos/rhyme_1.png" /></li> -->
+       <!--    <li class="carousel-item"><img src="img/a1.jpg" /></li>
+      <li class="carousel-item"><img src="img/a2.jpg" /></li>
+      <li class="carousel-item"><img src="img/a3.jpg" /></li>
+      <li class="carousel-item"><img src="img/a4.jpg" /></li>
+      <li class="carousel-item"><img src="img/a5.jpg" /></li>
+      <li class="carousel-item"><img src="img/a6.jpg" /></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!--
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <img src="demos/wop_2.png" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+        </h2>
+      </div>
+      <div class="item">
+        <img src="demos/cook_1.png" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+        </h2>
+      </div>
+      <div class="item">
+        <img src="demos/fix_1.png" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+       </h2>
+     </div>
+     <div class="item">
+      <img src="demos/rhyme_1.png" alt="MY ALT TEXT"/>
+      <h2 class="subtitle has-text-centered">
+      </h2>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+ -->
+
+<link rel="stylesheet" type="text/css" href="./EfficientSAM_files/simple_style.css">
+<script type="text/javascript" src="./EfficientSAM_files/simple_swiper.js"></script>
+
+
+<!-- <div class="app">
+  <div id="swiper-demo" class="simple-swiper-container">
+    <a id="prev" class="btn btn-prev"></a>
+    <a id="next" class="btn btn-next"></a>
+    <div class="pagination"></div>
+  </div>
+</div>
+<p id="index"></p>
+
+<script type="text/javascript">
+  new SimSwiper("#swiper-demo", {
+    autoplay: 4000,
+    duration: 300,
+    easing: 'ease',
+    button: {
+      prev: "#prev", // 前进后退按钮
+      next: "#next"
+    },
+    pagination: {
+      el: '.pagination',
+      click: true// 是否可以点击
+    },
+    // 轮播图数据
+    data: [{
+      index: 0,
+      href: '#',
+      src: 'demos/wop_2.png'
+    }, {
+      index: 1,
+      href: '#',
+      src: 'demos/cook_1.png'
+    }, {
+      index: 2,
+      href: '#',
+      src: 'demos/fix_1.png'
+    }, {
+      index: 3,
+      href: '#',
+      src: 'demos/rhyme_1.png'
+    }]
+  });
+</script> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Segment Anything Model (SAM) has emerged as a powerful tool for numerous vision applications. A key component that drives the impressive performance for zero-shot transfer and high versatility is a super large Transformer model trained on the extensive high-quality SA-1B dataset. While beneficial, the huge computation cost of SAM model has limited its applications to wider real-world applications. To address this limitation, we propose EfficientSAMs, light-weight SAM models that exhibit decent performance with largely reduced complexity. Our idea is based on leveraging masked image pretraining, SAMI, which learns to reconstruct features from SAM image encoder for effective visual representation learning. Further, we take SAMI-pretrained light-weight image encoders and mask decoder to build EfficientSAMs, and finetune the models on SA-1B for segment anything task. We perform evaluations on multiple vision tasks including image classification, object detection, instance segmentation, and semantic object detection, and find that our proposed pretraining method, SAMI, consistently outperforms other masked image pretraining methods. On segment anything task such as zero-shot instance segmentation, our EfficientSAMs with SAMI-pretrained lightweight image encoders perform favorably with a significant gain (e.g., ~4 AP  on COCO/LVIS) over other fast SAM models.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <br>
+    <br>
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width=“560” height=“315" src=“https://www.youtube.com/embed/__tftoxpBAw” title=“YouTube video player” frameborder=“0” allow=“accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share” allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+
+    <br>
+    <br>
+    <!-- Paper Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>Our proposed EfficientSAM contains two stages: SAMI pretraining (top) on ImageNet and SAM finetuning (bottom) on SA-1B.</b>
+          </p>
+          <ul>
+
+          </ul>
+        </div>
+        <img id="model" width="80%" src="./EfficientSAM_files/overview.png">
+        <h3 class="subtitle has-text-centered">
+          <p style="font-family:Times New Roman"><b>The overview of EfficientSAM framework.</b></p>
+        </h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+
+</section> -->
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3">Quantative Results</h2>
+    </div>
+  </div>
+  <div class="columns is-centered">
+    <img id="performance" width="70%" src="./EfficientSAM_files/performance.png">
+  </div>
+  <h3 class="subtitle has-text-centered">
+    <p style="font-family:Times New Roman"><b>Zero-shot instance segmentation results on COCO/LVIS.</b></p>
+  </h3>
+</section>
+
+<script src="js/Underscore-min.js"></script>
+<script src="js/index.js"></script>
+
+
+<!-- <section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3">Qualitative Results</h2>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3">Qualitative Results</h2>
+    </div>
+  </div>
+  <div class="columns is-centered">
+  <img id="results" width="70%" src="./EfficientSAM_files/demo_point.png">
+  </div>
+  <h3 class="subtitle has-text-centered">
+    <p style="font-family:Times New Roman"><b>Point prompt instance segmentation: Input (left), SAM (middle), EfficientSAM (right).</b></p>
+  </h3>
+  <div class="columns is-centered">
+    <img id="results" width="70%" src="./EfficientSAM_files/demo_box.png">
+    </div>
+    <h3 class="subtitle has-text-centered">
+      <p style="font-family:Times New Roman"><b>Box prompt instance segmentation: Input (left), SAM (middle), EfficientSAM (right).</b></p>
+    </h3>
+    <div class="columns is-centered">
+      <img id="results" width="70%" src="./EfficientSAM_files/demo_everything.png">
+      </div>
+      <h3 class="subtitle has-text-centered">
+        <p style="font-family:Times New Roman"><b>Segment everything: Input (left), SAM (middle), EfficientSAM (right).</b></p>
+      </h3>
+      <div class="columns is-centered">
+        <img id="results" width="70%" src="./EfficientSAM_files/demo_saliency.png">
+        </div>
+        <h3 class="subtitle has-text-centered">
+          <p style="font-family:Times New Roman"><b>Salient instance segmentation: Input (left), Mask (middle), Segmentation (right).</b></p>
+        </h3>
+<!-- <div id="main"> -->
+  <!-- <div class="box"><div class="pic"><img src="demos/ad_1.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/web_1.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/ad_2.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/cook_2.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/describe_2.png" alt=""></div></div>
+
+
+  <div class="box"><div class="pic"><img src="demos/fact_1.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/fact_2.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/fix_2.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/fun_1.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/fun_2.png" alt=""></div></div>
+
+  <div class="box"><div class="pic"><img src="demos/logo_1.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/op_1.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/op_2.png" alt=""></div></div>
+
+  <div class="box"><div class="pic"><img src="demos/wop_1.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/people_2.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/rhyme_2.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/story_1.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/story_2.png" alt=""></div></div>
+
+  <div class="box"><div class="pic"><img src="demos/describe_1.png" alt=""></div></div>
+  <div class="box"><div class="pic"><img src="demos/people_1.png" alt=""></div></div> -->
+
+
+<!-- </div> -->
+
+</section>
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+@article{xiong2023efficientsam,
+  title={EfficientSAM: Leveraged Masked Image Pretraining for Efficient Segment Anything},
+  author={Yunyang Xiong, Bala Varadarajan, Lemeng Wu, Xiaoyu Xiang, Fanyi Xiao, Chenchen Zhu, Xiaoliang Dai, Dilin Wang, Fei Sun, Forrest Iandola, Raghuraman Krishnamoorthi, Vikas Chandra},
+  journal={arXiv:2312.00863},
+  year={2023}
+}
+</code></pre>
+  </div>
+</section>
+
+
+<section class="section" id="Acknowledgement">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgement</h2>
+    <p>
+      This website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+      Commons Attribution-ShareAlike 4.0 International License</a>.
+    </p>
+  </div>
+</section>
+
+
+
+
+
+</body></html>
